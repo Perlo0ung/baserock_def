@@ -1,0 +1,6 @@
+name: mygpio
+kind: chunk
+build-commands:
+- make M="$(pwd)" -C "$PREFIX/src/linux" modules
+install-commands:
+- make M="$(pwd)" -C "$PREFIX/src/linux" INSTALL_MOD_PATH="$DESTDIR" modules_install

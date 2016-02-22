@@ -1,0 +1,6 @@
+name: kernel-patches
+kind: chunk
+build-commands:
+- install -d "$DESTDIR$PREFIX/src/linux-patches"
+- install -m 644 -D *.patch "$DESTDIR$PREFIX/src/linux-patches"
+

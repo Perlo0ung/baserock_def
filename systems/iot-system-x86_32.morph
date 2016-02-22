@@ -1,0 +1,15 @@
+name: iot-system-x86_32
+kind: system
+description: Thesis test system for 32bit x86.
+arch: x86_32
+strata:
+- name: build-essential
+  morph: strata/build-essential.morph
+  artifacts:
+  - build-essential-minimal
+- name: iot-x86_32
+  morph: strata/iot-x86_32.morph
+  artifacts:
+  - iot-x86_32-runtime
+configuration-extensions:
+- extensions/set-hostname

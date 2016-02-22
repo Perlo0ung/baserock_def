@@ -1,0 +1,13 @@
+name: u-boot
+kind: chunk
+configure-commands:
+- make efi-x86_defconfig
+build-commands:
+- make
+- make tools
+install-commands:
+- mkdir -p "$DESTDIR$PREFIX/bin"
+- mkdir -p "$DESTDIR/boot"
+- install -m 755 u-boot.bin "$DESTDIR/boot/."
+
+

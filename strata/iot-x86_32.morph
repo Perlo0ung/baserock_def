@@ -1,0 +1,41 @@
+name: iot-x86_32
+kind: stratum
+description: The set of platform specific components required for booting a 32-bit
+  x86 based system.
+build-depends:
+- morph: strata/core.morph
+chunks:
+- name: kernel-patches
+  morph: strata/iot-x86_32/kernel-patches.morph
+  repo: https://github.com/miofferg/linux-specs.git
+  ref: 4.2.3_raspberry-pi
+  unpetrify-ref: 34d9a57b444e24eba9bcec8ac371b6a6568be54d
+- name: linux-x86-32-generic
+  morph: strata/iot-x86_32/linux-x86-32-generic.morph
+  repo: upstream:linux-stable
+  ref: d95d66d3e83aa91a2455fd027a0ae8a1f5638a75
+  unpetrify-ref: v4.2.3
+  build-depends:
+  - kernel-patches
+- name: mygpio
+  morph: strata/iot-x86_32/mygpio.morph
+  repo: https://github.com/miofferg/mygpio.git
+  ref: 516903520fa30e159f152d33d85fd14436245d22
+  build-depends:
+  - linux-x86-32-generic
+- name: ledtest-init
+  morph: strata/iot-x86_32/ledtest-init.morph
+  repo: https://github.com/miofferg/ledtest.git
+  ref: 919e9912f6f0729db16b2cdcdf32c610b3c7567d
+- name: u-boot
+  morph: strata/iot-x86_32/u-boot.morph
+  repo: upstream:u-boot
+  ref: fa85e826c16b9ce1ad302a57e9c4b24db0d8b930
+  unpetrify-ref: v2016.01
+  build-depends:
+  - device-tree-compiler
+- name: device-tree-compiler
+  morph: strata/iot-x86_32/device-tree-compiler.morph
+  repo: upstream:device-tree-compiler
+  ref: 302fca9f4c283e1994cf0a5a9ce1cf43ca15e6d2
+  unpetrify-ref: v1.4.1
