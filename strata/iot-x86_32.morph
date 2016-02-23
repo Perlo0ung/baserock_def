@@ -1,7 +1,6 @@
 name: iot-x86_32
 kind: stratum
-description: The set of platform specific components required for booting a 32-bit
-  x86 based system.
+description: The set of platform specific components required for Thesis testsystem.
 build-depends:
 - morph: strata/core.morph
 chunks:
