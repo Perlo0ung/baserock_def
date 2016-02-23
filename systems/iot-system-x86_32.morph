@@ -11,5 +11,3 @@ strata:
   morph: strata/iot-x86_32.morph
   artifacts:
   - iot-x86_32-runtime
-configuration-extensions:
-- extensions/set-hostname

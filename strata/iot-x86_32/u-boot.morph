@@ -5,9 +5,18 @@ configure-commands:
 build-commands:
 - make
 - make tools
+pre-install-commands:
+- echo "mmc dev 0" > boot.script
+- echo "fatload mmc 0:1 ${kernel_addr_r} zImage" >> boot.script
+- echo "fatload mmc 0:1 ${fdt_addr_r} bcm2835-rpi-b.dtb" >> boot.script
+- echo "fatload mmc 0:1 ${ramdisk_addr_r} rootfs.cpio.uboot" >> boot.script
+- echo "setenv bootargs earlyprintk console=tty0 console=ttyAMA0" >> boot.script
+- echo "bootz ${kernel_addr_r} ${ramdisk_addr_r} ${fdt_addr_r}" >> boot.script
 install-commands:
 - mkdir -p "$DESTDIR$PREFIX/bin"
 - mkdir -p "$DESTDIR/boot"
+- tools/mkimage -C none -A arm -T script -d boot.script boot.scr.uimg
 - install -m 755 u-boot.bin "$DESTDIR/boot/."
+- install -m 755 boot.scr.uimg "$DESTDIR/boot/."
 
 

@@ -1,0 +1,10 @@
+name: iot-initramfs
+kind: cluster
+systems:
+- morph: systems/iot-system-x86_32.morph
+  deploy:
+    system:
+      type: extensions/iot-initramfs
+      location: iot-system-x86_32-initramfs.gz
+      HOSTNAME: iot-system-x86_32
+
