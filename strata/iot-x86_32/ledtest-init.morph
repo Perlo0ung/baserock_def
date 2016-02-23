@@ -2,7 +2,6 @@ name: ledtest-init
 kind: chunk
 build-commands:
 - cc -o ledtest ledtest.c
-- echo hallo
 install-commands:
 - mkdir -p "$DESTDIR/bin"
 - install -m 644 ledtest "$DESTDIR/bin/."
